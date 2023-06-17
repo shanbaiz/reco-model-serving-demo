@@ -46,6 +46,31 @@ def load_feature():
 
     return df
 
+## Use this if loading data from Amazon DynamoDB 
+# def load_feature():
+
+#     dynamodb = boto3.client('dynamodb')
+
+#     # Specify the table name and desired attributes
+#     table_name = 'demo-rating'
+#     attributes = ['userId', 'movieId', 'rating']
+
+#     # Retrieve the data from the table
+#     response = dynamodb.scan(TableName=table_name, ProjectionExpression=','.join(attributes))
+#     items = response['Items']
+#     data = []
+
+#     for item in items:
+#         row = {}
+#         for key, value in item.items():
+#             row[key] = list(value.values())[0]
+#         data.append(row)
+
+#     df = pd.DataFrame(data)
+
+#     return df
+
+
 
 def predict(user_id, n_recommendations=5):
     my_model = load_model()
@@ -81,7 +106,7 @@ def re_train():
     key_name = MODEL_PREFIX + 'model_' + dt_string + '.pkl'
     s3.put_object(Bucket=bucket_name, Key=key_name, Body=model_bytes)
 
-# Use for lambda testing
+## Use for lambda testing
 # def lambda_handler(event, context):
 #     if event['Action'] == 'predict':
 #         user_id = event['UID']
