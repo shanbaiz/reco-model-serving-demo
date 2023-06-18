@@ -1,10 +1,14 @@
 # reco-model-serving-demo
-This is a demo project to serve a basic movie recommeding model using docker and AWS services including S3, ECR, Lambda function, API Gateway and DynamoDB.  It supports real-time predict, as well as retrain upon request.
+This is a demo project to serve a basic movie recommending model using docker and AWS services including S3, ECR, Lambda function, API Gateway and DynamoDB.  It supports real-time predict, as well as retrain upon request.
 
 ![Project Flowchart](https://github.com/shanbaiz/reco-model-serving-demo/blob/main/reco-model-demo-flowchart.png)
 
 ### Public data source
 http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+
+### Model
+Training and fine-tuning the recommendation model is not the focus of this project, therefore we use Singular Value Decomposition (SVD) from Surprise without further tuning.
+For more info on this, please see https://github.com/microsoft/recommenders/blob/main/examples/02_model_collaborative_filtering/surprise_svd_deep_dive.ipynb
 
 ### Prerequisite
 AWS Account
